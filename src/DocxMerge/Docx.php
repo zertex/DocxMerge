@@ -214,7 +214,10 @@ class Docx {
             copy( $tempFile, $this->docxPath );
         }
         else {
-            rename($tempFile, $this->docxPath);
+            //rename($tempFile, $this->docxPath);
+            if ( copy($tempFile, $this->docxPath) ) {
+                unlink($tempFile);
+            }
         }
     }
 
